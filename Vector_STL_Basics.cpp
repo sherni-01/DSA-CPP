@@ -203,5 +203,11 @@ int main(){
     }
     cout<<endl;
     cout<<"No of keys: "<<m.count("lp")<<endl;
-
+    if(m.find("nk") != m.end()){// if the key doesnt exist it returns at the nth index
+    cout << "Found";
+    }
+    else{
+      cout << "Not Found";
+    }
+    return 0;
 }

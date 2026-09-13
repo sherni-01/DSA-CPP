@@ -414,7 +414,7 @@ int main(){
     a1.get();
     cout<<"Sum of "<<a1.n<<" numbers is : "<<a1.sum(a1.n); 
 }*/
-#include <iostream>
+/*#include <iostream>
 using namespace std;
 int prime_no(int n,int i){
     if(i>n/2){
@@ -435,4 +435,93 @@ int main(){
     else {
         cout<<"Prime";
     }
+}*/
+
+
+/*#include <iostream>
+#include <string.h>
+using namespace std;
+class student{
+    public:
+    char name[20];
+    int marks1;
+    int marks2;
+    int marks3;
+    void getdata(){
+        cin>>name>>marks1>>marks2>>marks3;
+    }
+    void display(){
+        cout<<"Topper's name: "<<name<<endl;
+    }
+}s[2];
+int main(){
+    for(int i=0;i<2;i++){
+        s[i].getdata();
+    }
+    int avg=0;
+    int maxavg=0;
+    int maxid=-1;
+    for(int i=0;i<2;i++){
+        avg = (s[i].marks1 + s[i].marks2+ s[i].marks3)/3;
+        if(avg>maxavg){
+            maxavg=avg;
+            maxid=i;
+        }
+    }
+    s[maxid].display();
+}*/
+/*#include <iostream>
+using namespace std;
+class largest{
+    public:
+    int *arr;
+    int max_no=0;
+
+    void get(){
+        arr=new int[5]; // allocate dynamic memory in fuc()
+        for(int i=0;i<5;i++){
+            cin>>*(arr+i);
+            if(*(arr+i)>max_no){
+                max_no=*(arr+i);
+            }
+        }
+    }
+    void display(){
+        cout<<"Largest element: "<<max_no;
+    }
+};
+int main(){
+    largest l1;
+    l1.get();
+    //l1.max();
+    l1.display();
+}*/
+#include <iostream>
+using namespace std;
+class student{
+    public:
+    char name[20];
+    int rno;
+    float cgpa;
+    void get(){
+        cin>>name>>rno>>cgpa;
+    }
+    void display(){
+        cout<<"Name : "<<name<<" | Rno: "<<rno<<" | Cgpa: "<<cgpa;
+        cout<<endl;
+    }
+
+};
+int main(){
+    student *arr;
+    arr=new student[5];
+    for(int i=0;i<5;i++){
+        (arr+i)->get();
+    }
+    for(int i=0;i<5;i++){
+        (arr+i)->display();
+    }
+
+    delete []arr;
+
 }

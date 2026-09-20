@@ -496,7 +496,7 @@ int main(){
     //l1.max();
     l1.display();
 }*/
-#include <iostream>
+/*#include <iostream>
 using namespace std;
 class student{
     public:
@@ -523,5 +523,240 @@ int main(){
     }
 
     delete []arr;
+
+}*/
+/*#include <iostream>
+using namespace std;
+class Student {
+    public:
+        char name[20];
+        int rollno;
+        int marks;
+        void input(){
+            cin>>name>>rollno>>marks;
+        }
+        void display(){
+            cout<<"Name,rollno,marks : "<<name<<" "<<rollno<<" "<<marks<<endl;
+        }
+        void calculateGrade(){
+            if(marks>90){
+                cout<<"Grade A";
+            }
+            else if(marks>80){
+                cout<<"Grade B";
+            }
+            else if(marks>70){
+                cout<<"Grade C";
+            }else if(marks>60){
+                cout<<"Grade D";
+            }
+            else{
+                cout<<"Fail";
+            }
+        }
+};
+
+int main(){
+    Student obj;
+    Student *p= &obj; //pointer to object
+    (*p).input(); //obj.input() or p->input()
+    //(*p).display();
+
+    int Student::*pmarks=&Student::marks;//pointer to mem
+    (*p).*pmarks=91;
+    p->display();
+
+    void (Student::*pfun)()=&Student::calculateGrade;//pointer to fun
+
+    (p->*pfun)();//obj.calculateGrade() or p->calculateGrade()
+
+}*/
+/*#include <iostream>
+using namespace std;
+class student{
+    public:
+        string name;
+        int rollno;
+        int marks;
+        void input(string name,int rollno,int marks){
+            this->name=name;
+            this->rollno=rollno;
+            this->marks=marks;
+        }
+        void display(){
+            cout<<"Name : "<<this->name<<endl;
+            cout<<"Roll no: "<<this->rollno<<endl;
+            cout<<"Marks : "<<this->marks<<endl;
+        }
+};
+int main(){
+    student s1,s2,s3;
+    s1.input("Adi",1,98);
+    s2.input("Binda",2,97);
+    s3.input("Chitra",3,89);
+
+    student *max=&s1;
+
+    if(s2.marks > max->marks){
+        max=&s2;
+    }if(s3.marks > max->marks){
+        max=&s3;
+    }
+
+    cout<<"Student with highest marks : \n";
+    max->display();
+
+}*/
+/*#include <iostream>
+using namespace std;
+class product{
+    public:
+        int n;
+        string pro;
+        int price[100][100];
+        int max=INT8_MIN;
+        void input(){
+            cout<<"Enter pro name: ";
+            cin>>pro;
+            cout<<"Enter price : ";
+            for(int i=0;i<n;i++){
+                for(int j=0;j<n;j++){
+                    cin>>price[i][j];
+                }
+            }
+        }
+        void max_(){
+            int i,j;
+            for( i=0;i<n;i++){
+                for( j=0;j<n;j++){
+                    if(max<price[i][j]){
+                        max=price[i][j];
+                        break;
+                    }
+                }
+            }
+            cout<<"Max price: "<<max<<endl;
+            cout<<"Position ->  Row: "<<i<<" Col : "<<j;
+        }
+
+
+};
+int main(){
+    product p1;
+    cout<<"Enter n: ";
+    cin>>p1.n;
+    p1.input();
+    p1.max_();
+}*/
+
+/*#include <iostream>
+using namespace std;
+class student{
+    public:
+        int n;
+        int marks[100][100];
+        int marks2[100][100];
+        int sum_=0;
+        
+        void input(){
+            for(int i=0;i<n;i++){
+                for(int j=0;j<n;j++){
+                    cin>>marks[i][j];
+                }
+            }
+        }
+        void trans(){
+            for(int i=0;i<n;i++){
+                for(int j=0;j<n;j++){
+                    marks2[i][j]=marks[j][i];
+                }
+            }
+            
+        }
+        void sum_di(){
+            for(int i=0;i<n;i++){
+                sum_+=marks[i][i];
+            }
+            cout<<"Sum of diagonal : "<<sum_;
+        }
+        void display(){
+            for(int i=0;i<n;i++){
+                for(int j=0;j<n;j++){
+                    cout<<marks2[i][j]<<" ";
+                }
+                cout<<endl;
+            }
+        }
+};
+int main(){
+    student s1;
+    cout<<"Enter n: ";
+    cin>>s1.n;
+    cout<<"Enter elements: ";
+    s1.input();
+    s1.trans();
+    cout<<"\nFinal:\n";
+    s1.display();
+
+}*/
+/*#include <iostream>
+using namespace std;
+//stoted array bionary search and pointer pointing to arr POINTER WITHIN CLASS WHERE MEMORY ACCOCATED DYNAMICALLY;
+class bin{
+    public:
+         int *ptr;
+         int target;
+
+    void get(){
+        ptr=new int[5]; // allocate dynamic memory in fuc() // takes memory at run time not compile time 
+        cout<<"Enter array element: ";
+        for(int i=0;i<5;i++){
+            cin>>*(ptr+i);
+        }
+        cout<<"Enter target: ";cin>>target;
+    }
+    void binary_(){
+        int start=0;
+        int end=5-1;
+        while(start<=end){
+            int mid=start+((end-start)/2);
+            if(*(ptr+mid)==target){
+                cout<<"Found at index : "<<mid;
+                break;
+            }else if(*(ptr+mid)>target){
+                end=mid-1;
+            }else{
+                start=mid+1;
+            }
+        }
+    }
+};
+int main(){
+    bin b1;
+    b1.get();
+    b1.binary_();
+    
+}*/
+#include <iostream>
+using namespace std;
+int main(){
+    int arr[5]={10,9,8,7,6};
+    for(int i=0;i<5;i++){
+        int swapped=0;
+        for(int j=0;j<5-i-1;j++){
+            if(arr[j]>arr[j+1]){
+                swap(arr[j],arr[j+1]);
+                swapped++;
+            }
+        }
+        if(swapped==0 && i==0){
+            cout<<"ALready sorted "<<endl;
+            break;
+
+        }
+    }
+    for(int i=0;i<5;i++){
+        cout<<arr[i]<<" ";
+    }
 
 }

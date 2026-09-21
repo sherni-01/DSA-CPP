@@ -737,7 +737,7 @@ int main(){
     b1.binary_();
     
 }*/
-#include <iostream>
+/*#include <iostream>
 using namespace std;
 int main(){
     int arr[5]={10,9,8,7,6};
@@ -758,5 +758,68 @@ int main(){
     for(int i=0;i<5;i++){
         cout<<arr[i]<<" ";
     }
+
+}*/
+/*#include<iostream>
+#include<string>
+using namespace std;
+//find no of vowels and consonents from the user inputed string 
+int main(){
+    string s;
+    getline(cin,s);
+    int vowel=0;
+    int consonent=0;
+    for(int i=0;i<s.length();i++){
+        if(s[i]=='a'||s[i]=='e'||s[i]=='i'||s[i]=='o'||s[i]=='u'){
+            vowel++;
+        }else{
+            consonent++;
+        }
+    }
+    cout<<"No of vowels: "<<vowel<<endl;
+    cout<<"No of consonent: "<<consonent;
+}*/
+/*#include<iostream>
+#include<string>
+using namespace std;
+//Find the file extension name and also the idx from where it starts and how many ch extension has 
+int main(){
+    string s;
+    getline(cin,s);
+    int st=0;int no_of_ch=0;
+    cout<<"Extension: ";
+    for(int i=0;i<s.length();i++){
+         st=s.find(".");   // or find_last_of('.') 
+    }
+    for(int i=st;i<s.length();i++){
+            cout<<s[i];
+            no_of_ch++;
+        }
+    cout<<"\nExtension starts at idx: "<<st<<endl;
+    cout<<"No of ch(s) in extension: "<<no_of_ch<<endl;
+
+}*/
+/*#include<iostream>
+#include<string>
+using namespace std;
+//check if inputed phn no is valid if yes replace first 5 with *
+int main(){
+    string s;
+    getline(cin,s);
+    if(s.length()>10 || s.length()<10){
+        cout<<"Invalid phn no.";
+    }else{
+        s.replace(0,5,"*****");
+        cout<<s<<endl;
+    }   
+}*/
+#include<iostream>
+#include<string>
+using namespace std;
+
+int main(){
+    string s;
+    getline(cin,s);
+    
 
 }

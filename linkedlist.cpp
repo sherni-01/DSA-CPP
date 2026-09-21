@@ -90,6 +90,7 @@ void middle(Node* head){
     }
     cout<<"Middle : "<<one->data;
 }
+voud 
 int main(){
     Node* n1=new Node(1); 
     Node* n2=new Node(2); n1->next=n2;

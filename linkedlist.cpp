@@ -90,14 +90,51 @@ void middle(Node* head){
     }
     cout<<"Middle : "<<one->data;
 }
-voud 
+void has_cycle(Node* head){
+    Node* slow=head;
+    Node* fast=head;
+
+    while(fast!=nullptr && fast->next!=nullptr){
+        slow=slow->next;
+        fast=fast->next->next;
+        if(slow==fast){
+            cout<<"YES CYCLE";
+            return ;
+        }
+    }
+    cout<<"NO CYCLE";
+}
+void Circular_trav(Node* head){
+    Node* curr=head;
+    do{
+        cout<<curr->data<<" ";
+        curr=curr->next;
+    }while(curr!=head);
+    cout<<"NULL";
+}
+void Recursive(Node* head){
+    Node* curr=head;
+    if(curr==NULL){
+        cout<<"NULL"<<endl;
+        return;
+    }
+    cout<< curr->data <<" ";
+    Recursive(curr->next);
+}
+
+void Print_reverse(Node* curr){
+    if(curr==nullptr) return;
+    Print_reverse(curr->next);
+    cout<<curr->data<<" ";
+}
+
 int main(){
     Node* n1=new Node(1); 
     Node* n2=new Node(2); n1->next=n2;
     Node* n3=new Node(3); n2->next=n3;
     Node* n4=new Node(4); n3->next=n4;
     Node* n5=new Node(5); n4->next=n5;
-
+                          //n5->next=n1;
     Node* head=n1;
 
     //travers_al(head);
@@ -105,6 +142,14 @@ int main(){
     //count_sum(head);
     //max_(head);
     //search(head,6);
-    middle(head);
+    //middle(head);
+    //has_cycle(head);
+    //Circular_trav(head);
+    //Recursive(head);
+    //Node* curr=head;
+    //Print_reverse(curr);
+
+
+    
     return 0;
 }

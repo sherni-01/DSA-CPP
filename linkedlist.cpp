@@ -128,13 +128,116 @@ void Print_reverse(Node* curr){
     cout<<curr->data<<" ";
 }
 
+Node* insert_athead(Node* head,int val){
+    Node* newNode= new Node(val);
+    if(head==NULL){
+        head=newNode;
+        newNode->next=NULL;
+        return head;
+    }
+    newNode->next=head;
+    head=newNode;
+    return head;
+}
+
+Node* insert_end(Node* head,int val){
+    Node* newNode=new Node(val);
+    if(head==nullptr){
+        return newNode;
+    }
+
+    Node*curr=head;
+
+    while(curr->next!=NULL){
+        curr=curr->next;
+    }
+    curr->next=newNode;
+    newNode->next=NULL;
+
+    return head;
+}
+Node* insert_atpos(Node* head,int pos,int val){
+    
+    Node* newNode=new Node(val);
+    if(pos==1){
+        newNode->next=head;
+        head=newNode;
+        return head;
+    }
+    if(head==NULL) return head;
+
+    Node* curr=head;
+
+    for(int i=0;i<pos-2 && curr!=NULL;i++){
+        curr=curr->next;
+    }
+    if(curr==NULL){
+        cout<<"Invalid position";
+        delete newNode;
+        return head;
+    }
+    newNode->next=curr->next;
+    curr->next=newNode;
+    return head;
+}
+
+Node* before_node(Node* head , Node* pos,int val){
+    Node* newNode=new Node(val);
+    if(pos==head){
+        newNode->next=head;
+        return newNode;
+    }
+    Node* curr=head;
+    while(curr!=NULL && curr->next!=pos){
+        curr=curr->next;
+    }
+    newNode->next=curr->next;
+    curr->next=newNode;
+    return head;
+}
+void after_given(Node* head , Node* prev , int val){
+    Node* newNode=new Node(val);
+    if(head==NULL){
+        cout<<"Cant insert after null";
+        delete newNode;
+        return;
+    }
+    Node* curr=head;
+    while(curr!=NULL && curr!=prev){
+        curr=curr->next;
+    }
+    if(curr==NULL){
+        cout<<"Invalid position";
+        delete newNode;
+        return;
+    }
+    newNode->next=curr->next;
+    curr->next=newNode;
+}
+Node* sorted_insert(Node* head,int val){
+    Node* newNode=new Node(val);
+
+    if(head==NULL ||val<head->data ){
+        newNode->next=head;
+        head=newNode;
+        return head;
+    }
+    Node* curr=head;
+    while(curr->next!=NULL && curr->next->data < val){
+        curr=curr->next;
+    }
+    newNode->next=curr->next;
+    curr->next=newNode;
+    return head;
+}
 int main(){
-    Node* n1=new Node(1); 
-    Node* n2=new Node(2); n1->next=n2;
-    Node* n3=new Node(3); n2->next=n3;
-    Node* n4=new Node(4); n3->next=n4;
-    Node* n5=new Node(5); n4->next=n5;
-                          //n5->next=n1;
+    Node* n1=new Node(10); 
+    Node* n2=new Node(20); n1->next=n2;
+    Node* n3=new Node(30); n2->next=n3;
+    Node* n4=new Node(40); n3->next=n4;
+    Node* n5=new Node(50); n4->next=n5;
+                          //n5->next=n1;                     
+    //Node* n1=NULL;                    
     Node* head=n1;
 
     //travers_al(head);
@@ -148,8 +251,13 @@ int main(){
     //Recursive(head);
     //Node* curr=head;
     //Print_reverse(curr);
-
-
-    
+    //head=insert_athead(head,5);
+    //head=insert_end(head,55);
+    //head=insert_atpos(head,3,25);
+    //head=before_node(head,head,15);
+    //Node* n6=new Node(7);
+    //after_given(head,15);
+    head=sorted_insert(head,5);
+    travers_al(head);
     return 0;
 }

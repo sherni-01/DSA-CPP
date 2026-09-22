@@ -816,10 +816,20 @@ int main(){
 #include<iostream>
 #include<string>
 using namespace std;
-
+//check if palindrome
 int main(){
     string s;
     getline(cin,s);
-    
+    int start=0;
+    int end=s.length()-1;
+    while(start<end){
+        if(tolower(s[start])!=tolower(s[end])){
+            cout<<"NOT palindrome";
+            return 0;
+        }
+        start++;
+        end--;
+    }
+    cout<<"Yes! palindrome";
 
 }

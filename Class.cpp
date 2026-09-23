@@ -813,7 +813,7 @@ int main(){
         cout<<s<<endl;
     }   
 }*/
-#include<iostream>
+/*#include<iostream>
 #include<string>
 using namespace std;
 //check if palindrome
@@ -832,4 +832,97 @@ int main(){
     }
     cout<<"Yes! palindrome";
 
+}*/
+
+/*#include <iostream>
+using namespace std;
+class factory{
+    string flavour;
+    int quantity;
+    public:
+    factory(string f="Vanilla",int q=1):flavour(f),quantity(q){ //initilizer list + parametirized cons.
+        cout<<"Cnstructor for val : "<<f<<" "<<q<<endl;
+    }
+    factory(factory &obj){
+        flavour=obj.flavour;
+        quantity=obj.quantity;
+        cout<<"COPY for val: "<<flavour<<" "<<quantity<<endl;
+    }
+    ~factory(){
+        cout<<"Distructor for val: "<<flavour<<" "<<quantity<<endl;
+    }
+
+};
+int main(){
+    {
+    factory f1;
+    factory f2(f1);
+    factory f4("strawberry",5);
+    }
+    factory f3("Choco",2);
+
+
+}*/
+
+/*#include <iostream>
+using namespace std;
+class pizza{
+    string size;
+    int topping;
+    string crust;
+    int total,sizep,toppingp,crustp;
+    public:
+    pizza(string s,int t,string c):size(s),topping(t),crust(c){
+        if(s=="small"){
+            sizep=200;
+        }else if(s=="medium"){
+            sizep=300;
+        }else{
+            sizep=400;
+        }
+
+        if(c=="regular"){
+            crustp=0;
+        }else{
+            crustp=100;
+        }
+        total=sizep+(t*50)+crustp;
+        cout<<"Your total :"<<total<<endl;
+    }
+    ~pizza(){
+        cout<<"Destroyed"<<endl;
+    }
+
+};
+int main(){
+    pizza p1("Small",4,"regular");
+    string size,crust;
+    int t;
+    cin>>size>>t>>crust;
+    pizza p2(size,t,crust);
+}*/
+#include <iostream>
+using namespace std;
+class juice{
+    string flv;
+    int price;
+    public:
+    juice(string f,int p):flv(f),price(p){
+        cout<<"Constuctor for v: "<<flv," ",price<<endl;
+    }
+    juice(juice &obj){
+        flv=obj.flv;
+        price=obj.price;
+        cout<<"Copy was called"<<endl;
+    }
+    ~juice(){
+
+    }
+};
+int main(){
+    string flv;
+    int price;
+    cin>>flv,price;
+    juice j1(flv,price);
+    juice j2(j1);
 }

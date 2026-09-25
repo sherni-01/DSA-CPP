@@ -137,22 +137,76 @@ Node* delete_dubsorted(Node* head){
     }
     return head;
 }
-
+Node* del_rev(Node* head){
+    Node* newHead=nullptr;
+    while(head!=nullptr){
+        Node* temp=head;
+        head=head->next;
+        temp->next=newHead;
+        newHead=temp;
+    }
+    return newHead;
+}
+Node* even_dlt(Node* head){
+    if(head==nullptr) return nullptr;
+    while(head!=nullptr && head->data %2==0){
+            Node* temp=head;
+            head=head->next;
+            delete temp;
+        
+    }
+    Node* curr=head;
+    while(curr!=nullptr && curr->next !=nullptr){
+        if(curr->next->data % 2==0){
+            Node* temp=curr->next;
+            curr->next=temp->next;
+            delete temp;
+        }
+        else{
+            curr=curr->next;
+        }
+        
+    }
+    return head;
+}
+Node* dlt_kth(Node* head,int k){
+    if(head==nullptr|| k<=1) return nullptr;
+    Node* prev=nullptr;
+    Node* curr=head;
+    
+    int i=1;
+    while(curr!=nullptr){
+        
+        if(i%k==0){
+            Node* temp=curr;
+            prev->next=curr->next;
+            curr=curr->next;
+            delete temp;
+        }else{
+            prev=curr;
+            curr=curr->next;
+            
+        }
+        i++;
+    }
+    return head;
+}
 int main(){
     Node* n1=new Node(10);
-    Node* n2=new Node(20); n1->next=n2;
+    Node* n2=new Node(21); n1->next=n2;
     Node* n3=new Node(30); n2->next=n3;
-    Node* n4=new Node(40); n3->next=n4;
+    Node* n4=new Node(41); n3->next=n4;
     Node* n5=new Node(50); n4->next=n5;
 
-    Node* head=nullptr;
+    Node* head=n1;
     //head=delete_beg(head);
     //head=delete_end(head);
     //head=delete_value(head,60);
     //head=delete_entire(head);
     //head=delete_occ(head,20);
     //head=delete_dubsorted(head);
+    //head=del_rev(head);
     print(head);
-    head=delete_dubsorted(head);cout<<"\n";
+    head=dlt_kth(head,2);cout<<"\n";
     print(head);cout<<"\n";
 }

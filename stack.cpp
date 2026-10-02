@@ -89,7 +89,7 @@ int main(){
     cout<<"Is empty: "<<isempty(&st)<<endl;
 }*/
 //.....TWO STACK USING ARRAY.....
-#include <iostream>
+/*#include <iostream>
 using namespace std;
 #define MAX 10 
 struct array{
@@ -147,7 +147,6 @@ void print(array* a){
     for(int i = a->top2; i < MAX; i++){
         cout << a->arr[i] << " ";
     }
-
     cout << endl;
 }
 int main(){
@@ -161,4 +160,123 @@ int main(){
     push2(&ar,90);
     print(&ar);
     return 0;
+}*/
+
+//...STRING REVERSAL USING STACK....
+
+/*#include <iostream>
+#include <stack>
+using namespace std;
+void reverse(string str){
+    stack<char>s;
+    for(int i=0;i<str.length();i++){
+        char ch=str[i];
+        s.push(ch);
+    }
+    string rev;
+    while(!s.empty()){
+        rev+=s.top();
+        s.pop();
+    }
+    cout<<"Reverse of "<<str<<" is "<<rev<<endl;
 }
+int main(){
+    string input;
+    cin>>input;
+    reverse(input);
+}*/
+
+//....BRACKET MATCHING ALGO.....
+
+/*#include <iostream>
+#include <stack>
+using namespace std;
+
+bool match(string str){
+    stack<char>s;
+    for(int i=0;i<str.length();i++){
+        char ch=str[i];
+        if(ch=='(' || ch=='[' || ch=='{'){
+            s.push(ch);
+        }
+        else if (ch==')' || ch==']' || ch=='}'){
+            if(s.empty()){
+                return false;
+            }
+
+            if(s.top()=='(' && ch!=')'){
+                return false;
+            }
+            else if(s.top()=='[' && ch!=']'){
+                return false;
+            }
+            else if(s.top()=='{' && ch!='}'){
+                return false;
+            }else{
+                s.pop();
+            }
+        }
+
+    }
+    return s.empty();
+}
+int main(){
+    string input=")(";
+    cout<<"Is matching ? "<<match(input);
+}*/
+
+//....Stack Traversal using auxillary stack....
+
+/*#include <iostream>
+#include <stack>
+using namespace std;
+void traverse(stack<int>& original){
+    stack<int>s2;
+    while(!original.empty()){
+        cout<<original.top()<<" ";
+        s2.push(original.top());
+        original.pop();
+    }
+    while(!s2.empty()){
+        original.push(s2.top());
+        s2.pop();
+    }
+    
+}
+int main(){
+    stack<int>s1;
+    s1.push(10);
+    s1.push(20);
+    s1.push(30);
+
+    traverse(s1);
+
+}*/
+
+//....DECIMAML TO BINARY...
+/*#include <iostream>
+#include <stack>
+using namespace std;
+void dtb(int decimal){
+    if(decimal==0){
+        cout<<"0";
+        return;
+    }
+    int deci=decimal;
+    stack<int>bin;
+    while(deci>0){
+        int rem=deci%2;
+        bin.push(rem);
+        deci/=2;
+    }
+    while(!bin.empty()){
+        cout<<bin.top();
+        bin.pop();
+    }
+}
+int main(){
+    int decimal;
+    cin>>decimal;
+    dtb(decimal);
+}*/
+

@@ -280,3 +280,177 @@ int main(){
     dtb(decimal);
 }*/
 
+//....INFIX TO POSTFIX....
+
+/*#include <iostream>
+#include <stack>
+using namespace std;
+int precedence(char c){
+    if(c=='^') return 3;
+    else if(c=='*' || c=='/') return 2;
+    else if(c=='+' || c=='-') return 1;
+    return -1;
+}
+string intopost(string str){
+    stack<char>s;
+    string ans="";
+    for(int i=0;i<str.length();i++){
+        char ch=str[i];
+        if((ch>='a' && ch<='z')||(ch>='A' && ch<='Z')){
+            ans+=ch;
+        }
+        else {
+            if(ch=='('){
+                s.push(ch);
+            }
+            else if(ch==')' && !s.empty()){
+                while(!s.empty() && s.top()!='('){
+                    ans+=s.top();
+                    s.pop();
+                }
+                s.pop();//pop ( at top
+            }
+            else{
+                while(!s.empty() && precedence(ch)<=precedence(s.top())){
+                    ans+=s.top();
+                    s.pop();
+                }
+                s.push(ch);
+            }
+        } 
+    }
+        while(!s.empty()){
+            ans+=s.top();
+            s.pop();
+        }
+    
+    return ans;
+}
+int main(){
+    string infix;
+    cin>>infix;
+    cout<<intopost(infix);
+}*/
+
+//.....INFIX TO PREFIX.....
+
+/*#include <iostream>
+#include <stack>
+#include <algorithm>
+using namespace std;
+int precedence(char c){
+    if(c=='^') return 3;
+    else if(c=='*' || c=='/') return 2;
+    else if(c=='+' || c=='-') return 1;
+    return -1;
+}
+string intopost(string str){
+    string ans="";
+    stack<char>s;
+    for(int i=0;i<str.length();i++){
+        char ch=str[i];
+        if((ch>='a' && ch <='z')|| (ch>='A' && ch<='Z')){
+            ans+=ch;
+        }else{
+            if(ch=='('){
+                s.push(ch);
+            }else if(ch==')'){
+                while(!s.empty() && s.top()!='('){
+                    ans+=s.top();
+                    s.pop();
+                }
+                s.pop();
+            }else{
+                while(!s.empty() && precedence(ch)<=precedence(s.top())){
+                    ans+=s.top();
+                    s.pop();
+                }
+                s.push(ch);
+            }
+        }
+    }
+    while(!s.empty()){
+        ans+=s.top();
+        s.pop();
+    }
+    return ans;
+}
+
+string intopre(string str){
+    reverse(str.begin(),str.end());
+    for(int i=0;i<str.length();i++){
+        char ch=str[i];
+        if(ch =='(') str[i]=')';
+        else if(ch==')') str[i]='(';
+    }
+    string post=intopost(str);
+    reverse(post.begin(),post.end());
+    return post;
+}
+int main(){
+    string infix;
+    cin>>infix;
+    cout<<intopre(infix);
+}*/
+
+//....EVALUTE POSTFIX....
+/*#include <iostream>
+#include <stack>
+#include <cmath>
+using namespace std;
+int evalute(string str){
+    stack<int>s;
+    for(int i=0;i<str.length();i++){
+        char ch=str[i];
+        if(ch>='0' && ch<='9'){
+            s.push(ch-'0');
+        }else{
+            int val2=s.top();s.pop();
+            int val1=s.top();s.pop();
+            switch(ch){
+                case '+':s.push(val1+val2);break;
+                case '-':s.push(val1-val2);break;
+                case '*':s.push(val1*val2);break;
+                case '^':s.push(pow(val1,val2));break;
+                case '/':s.push(val1/val2);break;
+            }
+        }
+    }
+    return s.top();
+}
+int main(){
+    string str;
+    cin>>str;
+    cout<<evalute(str);
+}*/
+
+//...evalue prefix...
+#include <iostream>
+#include <stack>
+#include <cmath>
+using namespace std;
+int evalutepre(string str){
+    stack<int>s;
+    for(int i=str.length()-1;i>=0;i--){
+        char ch=str[i];
+        if(ch>='0' && ch<='9'){
+            s.push(ch-'0');
+        }else{
+            int val1=s.top();s.pop();
+            int val2=s.top();s.pop();
+            switch(ch){
+                case '+':s.push(val1+val2);break;
+                case '-':s.push(val1-val2);break;
+                case '*':s.push(val1*val2);break;
+                case '^':s.push(pow(val1,val2));break;
+                case '/':s.push(val1/val2);break;
+            }
+        }
+    }
+    return s.top();
+}
+int main(){
+    string str;
+    cin>>str;
+    cout<<evalutepre(str);
+}

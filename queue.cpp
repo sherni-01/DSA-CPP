@@ -186,4 +186,5 @@ int main(){
     dequeue(&q);
     getfront(&q);
     return 0;
+    return 1;
 }

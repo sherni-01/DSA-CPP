@@ -184,7 +184,7 @@ int main(){
     square s;
     s.display();
 }*/
-#include <iostream>
+/*#include <iostream>
 using namespace std;
 class student{
     protected:
@@ -233,4 +233,124 @@ class result:protected test{
 int main(){
     result r;
     r.display();
+}*/
+/*#include <iostream>
+using namespace std;
+class student{
+    public:
+        string name;
+        void get(){
+            cout<<"Enter name: ";
+            cin>>name;
+            cout<<"Name: "<<name<<endl;
+            
+        }
+};
+class academic:public student{
+    public:
+        int m1,m2;
+        void getm(){
+            cout<<"Enter m1 m2 : ";cin>>m1>>m2;
+            cout<<"Total: "<<m1+m2<<endl;
+        }
+};
+class sport: public student{
+    public:
+        string grade;
+        void getg(){
+            cout<<"Enter grade: ";
+            cin>>grade;
+            cout<<"Grade: "<<grade<<endl;
+        }
+};
+class result : virtual public academic,virtual public sport{
+    public:
+        void display(){
+            get();
+            getm();
+            getg();
+        }
+        
+};
+int main(){
+    result r;
+    r.display();
+}
+*/
+/*#include <iostream>
+using namespace std;
+class M{
+    protected:
+        int m;
+    public:
+        M(int x):m(x){
+            cout<<"M: "<<m<<endl;
+        }
+        ~M(){
+            cout<<"Dectructor M"<<endl;
+        }
+
+};
+class N{
+    protected:
+        int n;
+    public:
+        N(int y):n(y){
+            cout<<"N: "<<y<<endl;
+        }
+        ~N(){
+            cout<<"Dectructor N"<<endl;
+        }
+};
+class P:public M,public N{
+    private:
+        int p;
+    public:
+        P(int a,int b):N(a),M(b){ //M(a),N(b) there is no change in invokation of base class
+            cout<<"X Y : "<<a<<" "<<b<<endl;
+        }
+        ~P(){
+            cout<<"Dectructor P"<<endl;
+        }
+};
+int main(){
+    P ob(2,3);
+    return 0;
+}*/
+#include <iostream>
+using namespace std;
+class abc{
+    private:
+        int x,y,z;
+    public:
+        abc(int a,int b,int c){
+            x=a;y=b;z=c;
+        }
+        void display(){
+            cout<<x<<" "<<y<<" "<<z<<endl;
+        }
+        void operator++(int){
+            x++;y++;z++; 
+        }
+        void operator++(){
+            ++x;++y;++z; 
+        }
+        void operator--(){
+            --x;--y;--z; 
+        }
+};
+int main(){
+    abc ob(1,2,3);
+    ob.display();
+    ++ob;   //ob.operator++(int);
+    cout<<"Prefix ++ : ";
+    ob.display();
+    ob++;   //ob.operator++();
+    cout<<"Postfix ++ : ";
+    ob.display();
+    --ob;   //ob.operator--();
+    cout<<"Prefix -- : ";
+    ob.display();
+
+    return(0);
 }

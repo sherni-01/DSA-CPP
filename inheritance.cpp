@@ -317,7 +317,7 @@ int main(){
     P ob(2,3);
     return 0;
 }*/
-#include <iostream>
+/*#include <iostream>
 using namespace std;
 class abc{
     private:
@@ -353,4 +353,339 @@ int main(){
     ob.display();
 
     return(0);
+}*/
+/*#include <iostream>
+using namespace std;
+class abc{
+    private:
+        int x,y,z;
+    public:
+        abc(int a,int b,int c){
+            x=a;y=b;z=c;
+        }
+        void display(){
+            cout<<x<<" "<<y<<" "<<z<<endl;
+        }
+        void operator--(){
+            --x;--y;--z; 
+        }
+
+};
+int main(){
+    abc ob(1,2,3);
+    ob.display();
+    --ob;   //ob.operator--();
+    cout<<"Prefix -- : ";
+    ob.display();
+
+
+    return(0);
+}*/
+//overload ++ prefix &  post op as friend;
+/*#include <iostream>
+using namespace std;
+class abc{
+    public:
+    int a;
+    
+        abc(int x){
+            a=x;
+        }
+        friend void operator++(abc&);
+        friend void operator++(abc&,int);
+        void display(){
+            cout<<"a: "<<a<<endl;
+
+        }
+};
+void operator++(abc &ob){
+    ob.a=++ob.a;
+}
+void operator++(abc &ob,int){
+    ob.a=ob.a++;
+}
+int main(){
+    abc ab(5);
+    ab.display();
+    ++ab;
+    cout<<"Prefix : ";
+    ab.display();
+    ab++;
+    cout<<"Postfix : ";
+    ab.display();
+}*/
+/*#include <iostream>
+using namespace std;
+class abc{
+    int a,b;
+    public:
+    abc(int x,int y){
+        a=x;b=y;
+    }
+    int operator+(abc s1){
+        return(a+s1.b);
+    }
+    int operator-(abc s2){
+        return(a-s2.b);
+    }
+    int operator*(abc m1){
+        return(a*m1.a);
+    }
+    int operator/(abc d1){
+        return(d1.b/a);
+    }
+
+};
+int main(){
+    int d;
+    abc s(5,10),t(10,20);
+    d=s+t;  //s will call the fun t ob is passed as agr
+    cout<<"Sum "<<d<<endl;
+    d=s-t;
+    cout<<"Sub "<<d<<endl;
+    d=s*t;
+    cout<<"Mul "<<d<<endl;
+    d=s/t;
+    cout<<"Div "<<d<<endl;
+    return(0);
+}*/
+//create class complex with mem x,y
+/*#include <iostream>
+using namespace std;
+class complex{
+    public:
+        int x,y;
+        complex(){x=10;y=20;}
+        complex(int a,int b){
+            x=a;y=b;
+        }
+        complex operator+(complex c){
+            complex temp;
+            temp.x=x+c.x;
+            temp.y=y+c.y;
+            return(temp);
+        }
+        void show(){
+            cout<<x<<"+i"<<y;
+        }
+        
+};
+int main(){
+    complex s(5,10),t(10,20),q;
+    q=s+t;
+    q.show();
+}*/
+
+//do above wala with friend 
+/*#include <iostream>
+using namespace std;
+class Distance{
+    int km,m;
+    public:
+    Distance(){
+        km=m=0;
+    }
+    Distance(int val){
+        km=val/1000;
+        m=val-(km*1000);
+    }
+    void show(){
+        cout<<km<<" Km "<<m<<" m "<<endl;
+    }
+};
+int main(){
+    int val;
+    cout<<"Enter distance: ";cin>>val;
+    Distance d1;
+    d1=val;
+    d1.show();
+
+    return(0);
+}*/
+/*#include <iostream>
+using namespace std;
+class Area{
+    double radius;
+    public:
+    Area(){
+        radius=0.0;
+    }
+    void get_data(int r){
+        radius=r;
+    }
+    operator double(){
+        int area=3.14*radius*radius;
+        return area;
+    }
+};
+int main(){
+    Area a1;
+    int r;
+    cout<<"Enter radius : ";cin>>r;
+    a1.get_data(r);
+    double area;
+    area=a1;
+    cout<<"Area : "<<area;
+}*/
+/*#include <iostream>
+using namespace std;
+struct A{
+    int x;
+
+};
+class B{
+    int y;
+    public:
+    void set(){
+        y=20;
+    }
+    void display(){
+        cout<<y;
+    }
+};
+
+int main(){
+    struct A a;
+    a.x=10;
+    B b;
+    b.set();
+    cout<<a.x<<" ";
+    b.display();
+    return 0;
+}*/
+/*#include <iostream>
+using namespace std;
+int main(){
+    int size;cout<<"Enter size: ";cin>>size;
+    double *arr=new double[size];
+    int sum=0;
+    for(int i=0;i<size;i++){
+        cin>>arr[i];
+        sum+=arr[i];
+    }
+    int avg=sum/size;
+    cout<<"Average : "<<avg;
+    delete []arr;
+
+    return 0;
+}*/
+/*#include <iostream>
+using namespace std;
+int main(){
+    int size;cout<<"Enter size: ";cin>>size;
+    int *arr=new int[size];
+    for(int i=0;i<size;i++){
+        cin>>*(arr+i);
+    }
+    int key;cout<<"Enter element to find : ";cin>>key;
+    int found=0;
+    for(int i=0;i<size;i++){
+        if(arr[i]==key){
+            found=1;
+            cout<<"Found at index: "<<i;
+            break;
+        }
+    }
+    if(found==0){
+        cout<<"Element not present in array !";
+    }
+    
+}*/
+/*#include <iostream>
+using namespace std;
+int main(){
+    int *var=new int;
+    cin>>*var;
+    int rev=0;
+    int nvar=*var;
+    while(nvar>0){
+        int d=nvar%10;
+        rev=d+rev*10;
+        nvar=nvar/10;
+    }
+    if(rev==*var){
+        cout<<"Palindrome";
+    }else{
+        cout<<"Non palindrome!";
+    }
+    delete var;
+
+}*/
+/*#include <iostream>
+using namespace std;
+class student {
+    public:
+        int roll;
+        int marks;
+        string name;
+        void fun(){
+            cin>>roll>>marks>>name;    
+        }
+        void put(){
+            cout<<name<<" "<<roll<<" "<<marks<<endl;
+        }
+};
+int main(){
+    student *p=new student[2];
+    for(int i=0;i<2;i++){
+        (p+i)->fun();//
+    }
+    for(int i=0;i<2;i++){
+        (*(p+i)).put();//p[i].put();
+    }
+    delete []p;
+}*/
+/*#include <iostream>
+using namespace std;
+class student {
+    public:
+        int roll;
+        int marks;
+        string name;
+        student(){
+            cin>>roll>>marks>>name;
+            cout<<name<<" "<<roll<<" "<<marks<<endl;
+        }
+        ~student(){
+            cout<<"deallocated";
+        }
+};
+int main(){
+    student *p=new student;
+    
+    delete p;
+}*/
+#include <iostream>
+using namespace std;
+class student{
+    public:
+        int s;
+        int *marks;
+        int sum=0;int i=0;
+        student(int size){
+            s=size;
+        marks=new int[size];
+        }
+        void initilize(int val){
+            marks[i++]=val;
+            sum+=val;
+        }
+        void avg(){
+            cout<<"Avg: "<<(float)sum/s;
+        }
+        ~student(){
+        delete []marks;
+        }
+
+};
+int main(){
+    int size;cout<<"Enter size: ";cin>>size;
+    student ob1(size);
+    int val;
+    for(int i=0;i<size;i++){
+        cin>>val;
+        ob1.initilize(val);
+    }
+    ob1.avg();
+    return 0;
 }

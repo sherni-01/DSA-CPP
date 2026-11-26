@@ -655,7 +655,7 @@ int main(){
     
     delete p;
 }*/
-#include <iostream>
+/*#include <iostream>
 using namespace std;
 class student{
     public:
@@ -687,5 +687,169 @@ int main(){
         ob1.initilize(val);
     }
     ob1.avg();
+    return 0;
+}*/
+/*#include <iostream>
+using namespace std;
+class employee{
+    public:
+        int id,salary;
+        void get(int i,int s){
+            id=i;
+            salary=s;
+        }
+        void put(){
+            cout<<"id: "<<id<<" "<<"Salary: "<<salary<<endl;
+        }
+
+
+};
+int main(){
+    int n;cout<<"Enter number of emp: ";cin>>n;
+    employee *e=new employee[n];
+    int id,sal;
+    cout<<"Enter id & sal:- "<<endl;
+    for(int i=0;i<n;i++){
+        cin>>id>>sal;
+        (e+i)->get(id,sal);
+    }
+    cout<<"Data:- "<<endl;
+    for(int i=0;i<n;i++){
+        cout<<"Emp "<<i+1<<" : ";
+        (e+i)->put();
+    }
+    delete []e;
+    return 0;
+}*/
+/*#include <iostream>
+using namespace std;
+class student{
+    public:
+        int sub;
+        int *marks;
+        string name;
+        int sum=0;int i=0;
+        student(int size){
+            sub=size;
+        marks=new int[size];
+        }
+        void initilize(int val){
+            marks[i++]=val;
+            sum+=val;
+        }
+        void display(){
+            cout<<"Name: "<<name<<endl;
+            for(int i=0;i<sub;i++){
+                cout<<"Marks in sub "<<i+1<<": "<<marks[i]<<endl;
+            }
+
+        }
+        void avg(){
+            cout<<"Avg: "<<(float)sum/sub;
+        }
+        ~student(){
+        delete []marks;
+        }
+
+};
+int main(){
+    int size;cout<<"Enter number of sub: ";cin>>size;
+    student ob1(size);
+    int val;
+    cout<<"Enter name: ";
+    cin>>ob1.name;
+    for(int i=0;i<size;i++){
+        cin>>val;
+        ob1.initilize(val);
+    }
+    ob1.display();
+    ob1.avg();
+    return 0;
+}*/
+/*#include <iostream>
+using namespace std;
+class Area{
+    public:
+        void calculatearea(int a){
+            cout<<"Area of square: "<<a*a<<endl;
+        }
+        void calculatearea(int a,int b){
+            cout<<"Area of rectangle: "<<a*b<<endl;
+        }
+        void calculatearea(float r){
+            cout<<"Area of circle: "<<3.14*r*r<<endl;
+        }
+};
+int main(){
+    Area ar;
+
+    ar.calculatearea(2);
+    ar.calculatearea(2,3);
+    ar.calculatearea(0.1f);
+}*/
+/*#include <iostream>
+using namespace std;
+class complex{
+    public:
+        int x,y;
+        complex(){x=1,y=2;}
+        complex(int a,int b){
+            x=a;y=b;
+        }
+        complex operator+(complex c){
+            complex temp;
+            temp.x=x+c.x;
+            temp.y=y+c.y;
+            return(temp);
+        }
+        void show(){
+            cout<<x<<"+i"<<y;
+        }
+        
+};
+int main(){
+    complex s(5,10),t(10,20),q;
+    q=s+t;
+    q.show();
+}*/
+
+/*#include <iostream>
+using namespace std;
+class shape{
+    public:
+        virtual void area(){
+            cout<<"Area fun of base class"<<endl;
+        }
+};
+class rectangle:public shape{
+    public:
+        void area(){
+            cout<<"Area() of derived rectangle"<<endl;
+        }
+};
+class circle:public shape{
+    
+};
+
+int main(){
+
+    return 0;
+}*/
+#include <iostream>
+using namespace std;
+class payment{
+    
+};
+class makepayment: public payment{
+
+};
+class upi:public payment{
+
+};
+class creditcard{
+
+};
+int main(){
+
     return 0;
 }

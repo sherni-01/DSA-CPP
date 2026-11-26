@@ -901,7 +901,7 @@ int main(){
     cin>>size>>t>>crust;
     pizza p2(size,t,crust);
 }*/
-#include <iostream>
+/*#include <iostream>
 using namespace std;
 class juice{
     string flv;
@@ -925,4 +925,48 @@ int main(){
     cin>>flv,price;
     juice j1(flv,price);
     juice j2(j1);
-}
+}*/
+/*#include <iostream>
+#include <fstream>
+using namespace std;
+int main(){
+    ifstream fin("source.txt");
+    ofstream fout("destination.txt");
+
+    char ch;
+    while(fin.get(ch)){
+        fout.put(ch);
+    }
+    fin.close();
+    fout.close();
+
+    cout<<"File copied";
+    return 0;
+}*/
+
+/*#include<stdlib.h> 
+using namespace std; 
+int main() { 
+    fstream obj1; 
+    obj1.open("Source.txt",ios::out); 
+    obj1<<"Hello"; obj1.close(); 
+    fstream obj2; obj2.open("Source.txt",ios::in); fstream obj3; obj3.open("Destination.txt",ios::out); if(!obj2||!obj3) { cout<<"file cannot be opened"; exit(1); } /* while(ch==EOF) { cout<<"file cannot be opened"; exit(1); } while(obj3.eof()!=0) { cout<<"file cannot be opened"; exit(1); } char ch; ch=obj2.get(); while(obj2.eof()==0) { obj3.put(ch); ch=obj2.get(); } cout<<"Data copied"; obj2.close(); obj3.close(); return 0; }
+*/
+/*#include <iostream>
+#include <fstream>
+using namespace std;
+int main(){
+    ifstream fin("file.txt");
+    
+    int character=0;
+    int vowel=0;
+    int space=0;
+    char ch=fin.get();
+    while(ch){
+        character++;
+        if(ch==' '){
+            space++;
+        }
+        if(ch=='a'||ch=='e'||ch=='i'||ch=='o'||ch=='u'||ch=='A'|)
+        }
+}*/
